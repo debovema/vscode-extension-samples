@@ -3,7 +3,7 @@
 	"displayName": "Cat Customs",
 	"description": "Custom Editor API Samples",
 	"version": "0.0.1",
-	"publisher": "vscode-samples",
+	"publisher": "debovema",
 	"private": true,
 	"license": "MIT",
 	"repository": {

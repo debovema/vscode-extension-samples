@@ -175,6 +175,8 @@ class PawDrawDocument extends Disposable implements vscode.CustomDocument {
 	}
 }
 
+const fs = require('fs');
+
 /**
  * Provider for paw draw editors.
  *
@@ -205,7 +207,9 @@ export class PawDrawEditorProvider implements vscode.CustomEditorProvider<PawDra
 			const uri = vscode.Uri.joinPath(workspaceFolders[0].uri, `new-${PawDrawEditorProvider.newPawDrawFileId++}.pawdraw`)
 				.with({ scheme: 'untitled' });
 
-			vscode.commands.executeCommand('vscode.openWith', uri, PawDrawEditorProvider.viewType);
+			fs.closeSync(fs.openSync(uri.path, 'w'));
+
+			vscode.commands.executeCommand('vscode.openWith', uri, PawDrawEditorProvider.viewType, vscode.ViewColumn.Beside);
 		});
 
 		return vscode.window.registerCustomEditorProvider(
